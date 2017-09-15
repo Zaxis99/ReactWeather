@@ -29,7 +29,7 @@ class WeatherForm extends React.Component {
                         />
                     </div>
                     <div>
-                        <button>Get Weather</button>
+                        <button className="button expanded hollow">Get Weather</button>
                     </div>
                 </form>
             </div>
