@@ -23,6 +23,7 @@ module.exports = {
     },
     resolve: {
         alias: {
+            applicationStyles: path.resolve(__dirname, 'app/styles/app.css'),
             About: path.resolve(__dirname, 'app/components/About.jsx'),
             ErrorModal: path.resolve(__dirname, 'app/components/ErrorModal.jsx'),
             Examples: path.resolve(__dirname, 'app/components/Examples.jsx'),
