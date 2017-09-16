@@ -19,7 +19,7 @@ $(document).foundation();
 
 ReactDOM.render(
     <Router>
-        <Route path='/' component={Main}/>
+       <Main />
     </Router>,
     document.getElementById("app")
 );

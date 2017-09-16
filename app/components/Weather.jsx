@@ -1,5 +1,9 @@
 var React = require('react');
 
+import { browserHistory } from 'react-router';
+
+var QueryString = require('query-string');
+
 var WeatherForm = require('WeatherForm');
 var WeatherMessage = require('WeatherMessage');
 var openWeatherMap = require('openWeatherMap');
@@ -16,12 +20,30 @@ class Weather extends React.Component {
         };
     }
 
+    componentDidMount() {
+        var location = QueryString.parse(this.props.location.search).location;
+        if (location && location.length > 0) {
+            this.handleSearch(location);
+            this.props.history.push('/');
+        }
+    }
+
+    componentWillReceiveProps(newProps){
+        var location = QueryString.parse(this.props.location.search).location;
+        if (location && location.length > 0){
+          this.handleSearch(location);
+          this.props.history.push('/');
+        }
+      }
+
     handleSearch(location) {
         var that = this;
 
         this.setState({
             isLoading: true,
-            errorMessage: undefined
+            errorMessage: undefined,
+            location: undefined,
+            temp: undefined
         });
 
         openWeatherMap.getTemp(location).then(function(temp) {

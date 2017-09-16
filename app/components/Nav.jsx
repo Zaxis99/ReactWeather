@@ -1,6 +1,6 @@
 var React = require('react');
 
-var {NavLink} = require('react-router-dom');
+var {NavLink, Redirect} = require('react-router-dom');
 
 class Nav extends React.Component {
     constructor(props) {
@@ -10,7 +10,15 @@ class Nav extends React.Component {
 
     onSearch(event) {
         event.preventDefault();
-        alert('not yet wired up');
+        
+        var location = this.location.value;
+        var encodedLocation = encodeURIComponent(location);
+
+        if (location.length > 0) {
+            this.location = '';
+            this.props.history.push('/?location='+encodedLocation);
+            this.props.location.search = '?location='+encodedLocation;
+        }
     }
 
     render() {
@@ -28,7 +36,11 @@ class Nav extends React.Component {
                     <form onSubmit={this.onSearch}>
                         <ul className="menu">
                             <li>
-                                <input type="search" placeholder="Search weather by city" />
+                                <input 
+                                    type="search" 
+                                    placeholder="Search weather by city" 
+                                    ref={(location) => { this.location = location}} 
+                                />
                             </li>
                             <li>
                                 <input type="submit" className="button" />

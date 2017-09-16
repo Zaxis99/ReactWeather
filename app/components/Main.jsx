@@ -1,7 +1,10 @@
 var React = require('react');
+
 import { Switch, Route } from 'react-router-dom';
-var Nav = require('Nav');
-var Weather = require('Weather');
+import { withRouter } from 'react-router'
+
+var Nav = withRouter(require('Nav'));
+var Weather = withRouter(require('Weather'));
 var About = require('About');
 var Examples = require('Examples');
 
@@ -14,7 +17,7 @@ var Main = (props) => {
                     <Switch>
                         <Route path='/about' component={About}/>
                         <Route path='/examples' component={Examples}/>
-                        <Route path='/' component={Weather}/>
+                        <Route exect path='/' component={Weather}/>
                     </Switch>
                 </div>
             </div>      
