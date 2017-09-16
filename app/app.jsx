@@ -13,7 +13,7 @@ require('style-loader!css-loader!foundation-sites/dist/css/foundation.min.css');
 require('style-loader!css-loader!foundation-sites/dist/css/foundation-float.min.css'); // <--- new line
 
 // App CSS
-require('style-loader!css-loader!applicationStyles');
+require('style-loader!css-loader!sass-loader!applicationStyles');
 
 $(document).foundation();
 
